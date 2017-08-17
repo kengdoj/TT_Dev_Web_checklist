@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'/>
+    <title>508 Developer's Web Checklist</title>
+<style type="text/css">
+/***********General*************************/
+body  {
+	height: 100%;
+	font-size: 14px;
+	font-family: Ariel, Helvetica, sans-serif;
+	line-height: 1.4em;
+	margin:0 auto;
+	width:90%;
+	color:#303030;
+	word-wrap: break-word;
+}
+fieldset {
+	width: 60%;
+	margin: 0 auto;
+	}
+	
+h1, h2, h3, h4, h5, h6, textarea {font-family: Arial, sans-serif;}
+
+h1 {
+	font-size:2em;
+	font-weight:600;
+	color:#004380;
+}
+
+h2 {
+	font-size: 1.8em;
+	font-weight: 600;
+	margin-top:1.3em;
+	color:#004380;
+}
+
+h3 {
+	font-size:1.2em;
+	font-weight: 700;
+	margin-top:1.5em;
+	margin-bottom: 0;
+	color: #004080;
+}
+h4 {
+	font-size:1.1em;
+	font-weight: 600;
+	margin-top:1.5em;
+	margin-bottom: 0;
+	color: #004080;
+}
+
+textarea {width: 95%;}
+
+/******************* Table Style ******************/
+
+table a:link {
+	color: #004380;
+	text-decoration:underline;
+}
+
+table a:visited {
+	color: #000080;
+	text-decoration:underline;
+}
+
+table a:active, table a:hover {
+	color: #004040;
+	text-decoration:underline;
+}
+table a:focus {border: 3px solid transparent;}
+
+table {
+	table-layout: fixed;
+	border-collapse: collapse;
+	max-width: 100%;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#303030;
+	font-size:12px;
+	background: #F0F0F0;
+	margin:20px 0;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+}
+
+table, th, td {border: 1px solid #909090;}
+
+table th {
+	padding:5px 5px 5px 5px;
+	background: #CCCCCC;
+	vertical-align: top;
+}
+
+.col1 {width:10%;}
+.col2 {width:8%;}
+.col3 {width:10%;}
+.col4 {width:15%;}
+.col5 {width:20%;}
+.col6 {width:37%;}
+
+table td {
+	padding: 5px;
+	background: #F7F7F7;
+	text-align: left;
+	vertical-align: top;
+	height: 100%;
+}
+
+table tr:first-child th:first-child {
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+}
+
+table tr:first-child th:last-child {
+	-moz-border-radius-topright:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+}
+
+table tr:last-child th:first-child{
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+table tr:last-child td:last-child{
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+
+table tr:first-child td:last-child{
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-top-right-radius:3px;
+}
+
+table tr:hover td{background: #C0FFFF;}
+table tr:hover th{background: #C0FFFF;}
+
+.hover {
+   background: #C0FFFF; 
+}
+
+/********************Columns************************/
+.cols2 {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+		-webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+		-moz-column-gap: 10px; /* Firefox */
+		column-gap: 10px;
+}
+ 
+div.keeptogether {
+        display: inline-block;
+        width: 100%;
+        margin:0;
+        padding:0;
+}
+ 
+.keeptogether h3 {margin-top:1em;}
+
+/** https://www.webcodegeeks.com/css/css-button-style-example/ **/
+button{
+    	border-radius: 0.5em;			/* increased border-radius */
+    	text-decoration: none;
+    	color: white;				/* changed text color to white */
+    	padding: 1em 3em;  			/* increased padding for a larger button */
+    	background-color: #004380;		/* changed background color to a nice blue */
+    	text-transform: uppercase;		/* made the text uppercase */
+    	font-weight: bold;			/* gave the text a bold look */
+}
+/************* Print *****************/
+.pagebreak{
+	page-break-before: always;
+	column-span: all;
+}
+
+.cols2 table{
+	break-after: column;
+	-webkit-break-after: always; /* Chrome, Safari, Opera */
+	-moz-break-after: always; /* Firefox */
+}
+
+tr{page-break-inside: avoid;}
+
+@media print {
+	/* thead {display: table-header-group;} */
+	.no-print {display: none !important;} /* for nav menu */
+	body {width:100%; margin:0; float: none; line-height: 1.5em; padding:0;}
+	.container {padding: 0;}
+}
+
+@page { size:8.5in 11in; margin: 1.5cm }
+
+</style>
+<!-- Help pop ups -->
+<!-- source: https://a11y.nicolas-hoffmann.net/modal/ -->
+<style>
+/* needed for old browsers */
+dialog {
+  display: block;
+}
+/* removes scroll when modal is opened */
+.no-scroll {
+  overflow: hidden;
+}
+/* overlay covers everything */
+.simple-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #808080;
+  opacity: .8;
+  z-index: 666; /* satan inside */
+  cursor: pointer;
+}
+/* modal */
+.simple-modal {
+  position: fixed;
+  left: 25%;
+  top: 5%;
+  width: 50%;
+  max-height: 98vh;
+  right: auto;
+  border: 2px solid #000; 
+  background: #fff;
+  z-index: 667;
+  padding: 2em;
+  overflow: auto;
+}
+.simple-modal-close {
+  float: right;
+  background: #933;
+  border-radius: 1em;
+  color: #fff;
+  padding: .25em;
+  text-decoration: none;
+  line-height: 1.2;
+  text-align: center;
+}
+.simple-modal-close:focus,
+.simple-modal-close:hover,
+.simple-modal-close:active {
+  background: #000040;
+}
+.simple-modal-overlay[data-background-click="disabled"] {
+  cursor: auto;
+}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$("#noforms").on('click',function(){
+		if(this.checked==true){
+			$("#f122Asel").val("NA");
+			$("#f122Dsel").val("NA");
+			$("#f122Fsel").val("NA");
+		}else{
+			$("#f122Asel").val("select");
+			$("#f122Dsel").val("select");
+			$("#f122Fsel").val("select");
+		}
+    });
+	$("#nolinks").on('click',function(){
+		if(this.checked==true){
+			$("#c123Asel").val("NA");
+			$("#c123Bsel").val("NA");
+		}else{
+			$("#c123Asel").val("select");
+			$("#c123Bsel").val("select");
+		}
+    });
+	$("#noimages").on('click',function(){
+		if(this.checked==true){
+			$("#i22Asel").val("NA");
+			$("#i22Esel").val("NA");
+			$("#i22Fsel").val("NA");
+			$("#i22Gsel").val("NA");
+			$("#i25Asel").val("NA");
+		}else{
+			$("#i22Asel").val("select");
+			$("#i22Esel").val("select");
+			$("#i22Fsel").val("select");
+			$("#i22Gsel").val("select");
+			$("#i25Asel").val("select");
+		}
+    });
+	$("#novideo").on('click',function(){
+		if(this.checked==true){
+			$("#v23Bsel").val("NA");
+			$("#a24Asel").val("NA");
+			$("#m6ABsel").val("NA");
+			$("#m6CDsel").val("NA");
+		}else{
+			$("#v23Bsel").val("select");
+			$("#a24Asel").val("select");
+			$("#m6ABsel").val("select");on
+			$("#m6CDsel").val("select");
+		}
+    });
+	$("#nodatatables").on('click',function(){
+		if(this.checked==true){
+			$("#t10Asel").val("NA");
+			$("#t10Bsel").val("NA");
+			$("#t10Csel").val("NA");
+		}else{
+			$("#t10Asel").val("select");
+			$("#t10Bsel").val("select");
+			$("#t10Csel").val("select");
+		}
+    });
+	$("#nocss").on('click',function(){
+		if(this.checked==true){
+			$("#s11Asel").val("NA");
+			$("#s11Bsel").val("NA");
+			$("#s11Csel").val("NA");
+			$("#s11Dsel").val("NA");
+		}else{
+			$("#s11Asel").val("select");
+			$("#s11Bsel").val("select");
+			$("#s11Csel").val("select");
+			$("#s11Dsel").val("select");
+		}
+    });
+	$("#noframes").on('click',function(){
+		if(this.checked==true){
+			$("#f12Asel").val("NA");
+			$("#f12Bsel").val("NA");
+		}else{
+			$("#f12Asel").val("select");
+			$("#f12Bsel").val("select");
+		}
+    });
+	$("#norepcontent").on('click',function(){
+		if(this.checked==true){
+			$("#r13Asel").val("NA");
+			$("#r13Bsel").val("NA");
+		}else{
+			$("#r13Asel").val("select");
+			$("#r13Bsel").val("select");
+		}
+    });
+	$("#noplugins").on('click',function(){
+		if(this.checked==true){
+			$("#p14Asel").val("NA");
+			$("#p14Bsel").val("NA");
+		}else{
+			$("#p14Asel").val("select");
+			$("#p14Bsel").val("select");
+		}
+    });
+	$("#noaltversion").on('click',function(){
+		if(this.checked==true){
+			$("#a15Asel").val("NA");
+			$("#a15Bsel").val("NA");
+		}else{
+			$("#a15Asel").val("select");
+			$("#a15Bsel").val("select");
+		}
+    });
+});
+</script>
+		
+<script type="text/javascript">
+  $(document).ready(function(){
+	$("div#k11Aexp").hide(); // HIDE THE EXPLAIN FIELD UNTIL Not Met IS SELECTED.
+	$("div#k11Bexp").hide(); // 1.1 Keyboard Access
+	$("div#k11Cexp").hide();
+	$("div#k11Dexp").hide();
+	$("div#k11Eexp").hide();
+	$("div#k11Fexp").hide();
+	$("div#k11Gexp").hide();
+	$("div#k11Hexp").hide();
+	$("div#k11Iexp").hide();
+
+	$("div#f122Aexp").hide(); // 1.2.2 Forms
+	$("div#f122Bexp").hide();
+	$("div#f122Cexp").hide();
+	$("div#f122Dexp").hide();
+	$("div#f122Eexp").hide();
+	$("div#f122Fexp").hide();
+
+	$("div#c123Aexp").hide(); //1.2.3 Controls
+	$("div#c123Bexp").hide();	
+
+	$("div#i22Aexp").hide(); // 2.2 Images
+	$("div#i22Bexp").hide();
+	$("div#i22Cexp").hide();
+	$("div#i22Dexp").hide();
+	$("div#i22Eexp").hide();
+	$("div#i22Fexp").hide();
+	$("div#i22Gexp").hide();
+
+	$("div#v23Bexp").hide(); // 2.3 Video-only
+
+	$("div#a24Aexp").hide(); // 2.4 Audio-only
+
+	$("div#i25Aexp").hide(); // 2.5 Image maps
+
+	$("div#cd31Bexp").hide(); // 3.1 Color Dependence
+
+	$("div#cc32Aexp").hide(); // 3.2 Color contrast
+
+	$("div#f24Aexp").hide(); // 4 Flashing
+	$("div#f24Bexp").hide();
+
+	$("div#pt5Aexp").hide(); // 5 page Titles	
+
+	$("div#m6ABexp").hide(); // 6 Multimedia
+	$("div#m6CDexp").hide();
+
+	$("div#t7Aexp").hide(); // 7 Time Outs
+	$("div#t7Bexp").hide();
+	$("div#t7Cexp").hide();
+
+	$("div#L91Aexp").hide(); // 9.1 Language
+	$("div#L91Bexp").hide();
+
+	$("div#h92Aexp").hide(); // 9.2 Section Headings
+	$("div#h92Bexp").hide();
+
+	$("div#t10Aexp").hide(); // 10 Data Tables
+	$("div#t10Bexp").hide();
+	$("div#t10Cexp").hide();
+
+	$("div#s11Aexp").hide(); // 11 Style Sheet Dep
+	$("div#s11Bexp").hide();
+	$("div#s11Cexp").hide();
+	$("div#s11Dexp").hide();
+
+	$("div#f12Aexp").hide(); // 12 Frames
+	$("div#f12Bexp").hide();
+
+	$("div#r13Aexp").hide(); // 13 Repetitive Content
+	$("div#r13Bexp").hide();
+
+	$("div#p14Aexp").hide(); // 14 Required Plugins
+	$("div#p14Bexp").hide();
+
+	$("div#a15Aexp").hide(); // 15 Alternate Version
+	$("div#a15Bexp").hide();
+//});
+//hide explain field unless Not Met is SELECTed 
+//(source: http://www.tutorialrepublic.com/faq/show-hide-divs-based-on-dropdown-selection-in-jquery.php)
+// 1.1 Keyboard Access
+	$("select#k11Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Aexp").show();
+            }           
+            else{
+                $("div#k11Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#k11Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Bexp").show();
+            }           
+            else{
+                $("div#k11Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Cexp").show();
+            }           
+            else{
+                $("div#k11Cexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Dsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Dexp").show();
+            }           
+            else{
+                $("div#k11Dexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Esel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Eexp").show();
+            }           
+            else{
+                $("div#k11Eexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Fsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Fexp").show();
+            }           
+            else{
+                $("div#k11Fexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Gsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Gexp").show();
+            }           
+            else{
+                $("div#k11Gexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Hsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Hexp").show();
+            }           
+            else{
+                $("div#k11Hexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Isel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#k11Iexp").show();
+            }           
+            else{
+                $("div#k11Iexp").hide();
+            }
+        });
+    }).change();
+
+// 1.2.2 Forms
+	$("select#f122Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Aexp").show();
+            }           
+            else{
+                $("div#f122Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#f122Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Bexp").show();
+            }           
+            else{
+                $("div#f122Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#f122Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Cexp").show();
+            }           
+            else{
+                $("div#f122Cexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#f122Dsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Dexp").show();
+            }           
+            else{
+                $("div#f122Dexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#f122Esel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Eexp").show();
+            }           
+            else{
+                $("div#f122Eexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#f122Fsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Fexp").show();
+            }           
+            else{
+                $("div#f122Fexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#f122Gsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Gexp").show();
+            }           
+            else{
+                $("div#f122Gexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#k11Hsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f122Hexp").show();
+            }           
+            else{
+                $("div#f122Hexp").hide();
+            }
+        });
+    }).change();
+
+// 1.2.3 Links and User Controls
+	$("select#c123Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#c123Aexp").show();
+            }           
+            else{
+                $("div#c123Aexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#c123Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#c123Bexp").show();
+            }           
+            else{
+                $("div#c123Bexp").hide();
+            }
+        });
+    }).change();
+
+// 2.2 Images
+	$("select#i22Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Aexp").show();
+            }           
+            else{
+                $("div#i22Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#i22Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Bexp").show();
+            }           
+            else{
+                $("div#i22Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#i22Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Cexp").show();
+            }           
+            else{
+                $("div#i22Cexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#i22Dsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Dexp").show();
+            }           
+            else{
+                $("div#i22Dexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#i22Esel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Eexp").show();
+            }           
+            else{
+                $("div#i22Eexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#i22Fsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Fexp").show();
+            }           
+            else{
+                $("div#i22Fexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#i22Gsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i22Gexp").show();
+            }           
+            else{
+                $("div#i22Gexp").hide();
+            }
+        });
+    }).change();
+
+// 2.3 Video Only
+	$("select#v23Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#v23Bexp").show();
+            }           
+            else{
+                $("div#v23Bexp").hide();
+            }
+        });
+    }).change();	
+
+// 2.4 Audio only
+	$("select#a24Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#a24Aexp").show();
+            }           
+            else{
+                $("div#a24Aexp").hide();
+            }
+        });
+    }).change();	
+
+// 2.5 Image maps
+	$("select#i25Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#i25Aexp").show();
+            }           
+            else{
+                $("div#i25Aexp").hide();
+            }
+        });
+    }).change();	
+
+// 3.1 Color Dependence
+	$("select#cd31Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#cd31Bexp").show();
+            }           
+            else{
+                $("div#cd31Bexp").hide();
+            }
+        });
+    }).change();	
+
+// 3.2 Color Contrast
+	$("select#cc32Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#cc32Aexp").show();
+            }           
+            else{
+                $("div#cc32Aexp").hide();
+            }
+        });
+    }).change();	
+
+// 4 Flashing
+	$("select#f24Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f24Aexp").show();
+            }           
+            else{
+                $("div#f24Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#f24Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f24Bexp").show();
+            }           
+            else{
+                $("div#f24Bexp").hide();
+            }
+        });
+    }).change();
+
+// 5 Page Titles
+	$("select#pt5Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#pt5Aexp").show();
+            }           
+            else{
+                $("div#pt5Aexp").hide();
+            }
+        });
+    }).change();	
+
+// 6 Multimedia
+	$("select#m6ABsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#m6ABexp").show();
+            }           
+            else{
+                $("div#m6ABexp").hide();
+            }
+        });
+    }).change();	
+	
+	$("select#m6CDsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#m6CDexp").show();
+            }           
+            else{
+                $("div#m6CDexp").hide();
+            }
+        });
+    }).change();
+
+
+// 7 Time Outs
+	$("select#t7Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t7Aexp").show();
+            }           
+            else{
+                $("div#t7Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#t7Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t7Bexp").show();
+            }           
+            else{
+                $("div#t7Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#t7Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t7Cexp").show();
+            }           
+            else{
+                $("div#t7Cexp").hide();
+            }
+        });
+    }).change();
+
+// 9.1 Language
+	$("select#L91Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#L91Aexp").show();
+            }           
+            else{
+                $("div#L91Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#L91Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#L91Bexp").show();
+            }           
+            else{
+                $("div#L91Bexp").hide();
+            }
+        });
+    }).change();
+
+// 9.2 Section Headings
+	$("select#h92Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#h92Aexp").show();
+            }           
+            else{
+                $("div#h92Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#h92Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#h92Bexp").show();
+            }           
+            else{
+                $("div#h92Bexp").hide();
+            }
+        });
+    }).change();
+
+// 10 Data Tables
+	$("select#t10Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t10Aexp").show();
+            }           
+            else{
+                $("div#t10Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#t10Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t10Bexp").show();
+            }           
+            else{
+                $("div#t10Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#t10Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#t10Cexp").show();
+            }           
+            else{
+                $("div#t10Cexp").hide();
+            }
+        });
+    }).change();
+
+// 11 Style Sheet Dep
+	$("select#s11Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#s11Aexp").show();
+            }           
+            else{
+                $("div#s11Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#s11Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#s11Bexp").show();
+            }           
+            else{
+                $("div#s11Bexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#s11Csel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#s11Cexp").show();
+            }           
+            else{
+                $("div#s11Cexp").hide();
+            }
+        });
+    }).change();
+
+	$("select#s11Dsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#s11Dexp").show();
+            }           
+            else{
+                $("div#s11Dexp").hide();
+            }
+        });
+    }).change();
+
+// 12 Frames
+	$("select#f12Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f12Aexp").show();
+            }           
+            else{
+                $("div#f12Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#f12Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#f12Bexp").show();
+            }           
+            else{
+                $("div#f12Bexp").hide();
+            }
+        });
+    }).change();
+
+// 13 Repetitive Content
+	$("select#r13Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#r13Aexp").show();
+            }           
+            else{
+                $("div#r13Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#r13Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#r13Bexp").show();
+            }           
+            else{
+                $("div#r13Bexp").hide();
+            }
+        });
+    }).change();
+
+// 14 Required Plugins
+	$("select#p14Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#p14Aexp").show();
+            }           
+            else{
+                $("div#p14Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#p14Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#p14Bexp").show();
+            }           
+            else{
+                $("div#p14Bexp").hide();
+            }
+        });
+    }).change();
+
+// 15 Alternative Version
+	$("select#a15Asel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#a15Aexp").show();
+            }           
+            else{
+                $("div#a15Aexp").hide();
+            }
+        });
+    }).change();	
+
+	$("select#a15Bsel").change(function(){
+        $(this).find("option:selected").each(function(){
+            if($(this).attr("value")=="No"){
+                $("div#a15Bexp").show();
+            }           
+            else{
+                $("div#a15Bexp").hide();
+            }
+        });
+    }).change();
+
+});	
+</script>
+
+<!-- http://www.jsclasses.org/package/321-JavaScript-Save-the-current-page-as-HTML-to-a-file.html#view_files/files/3020 -->
+<!-- start SaveOfflineForm code -->
+<script>
+            (navigator.appVersion.indexOf("MSIE") != -1) && alert("If you use the Explorer browser will not be able to save the data. Use Chrome or Firefox!");
+            //Add this code inside the tag "<body>":
+            //<button type="button" onclick="SaveAs();">Save</button> 
+            //save file------------------------------------------------->
+            var DownloadFile = function(data, name) {
+                var el = document.createElement('a');
+                var ev = document.createEvent("MouseEvents");
+                ev.initMouseEvent("click", true, false, self, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                el.setAttribute("href", 'data:application/octet-stream;base64,' + btoa(unescape(encodeURIComponent(data))));
+                el.setAttribute("download", name || self.location.pathname.slice(self.location.pathname.lastIndexOf('/') + 1));
+                el.dispatchEvent(ev);
+            };
+            var SaveAs = function () {
+                var elements = document.getElementsByTagName("input");
+                for (var i in elements) {
+                    try {
+                        elements[i].setAttribute("value", elements[i].value);
+                        if (elements[i].checked)
+                            elements[i].setAttribute("checked", "checked");
+                        else
+                            elements[i].removeAttribute("checked");
+                    } catch (e) {
+                    }
+                }
+                elements = document.getElementsByTagName("textarea");
+                for (var i in elements) {
+                    try {
+                        elements[i].innerHTML = elements[i].value;
+                    } catch (e) {
+                    }
+                }
+                elements = document.getElementsByTagName("select");
+                for (var i in elements) {
+                    if (elements[i].options) {
+                        var selectedIndex = elements[i].selectedIndex;
+                        for (var o in elements[i].options) {
+                            try {
+                                elements[i].options[o].removeAttribute("selected");
+                            } catch (e) {
+                            }
+                        }
+                        elements[i].options[selectedIndex].setAttribute("selected", "selected");
+                    }
+                }
+                var filename = document.getElementsByTagName("title")[0].innerHTML.replace(/ /g, "_") + "_" +
+                        new Date().toISOString().slice(0, 19).replace('T', '_').substr(0, 10) +
+                        ".html";
+                DownloadFile("<!DOCTYPE html>\n<html>\n" + document.getElementsByTagName("html")[0].innerHTML + "\n</html>", filename);
+            }
+        </script>
+        <!-- end SaveOfflineForm code -->
+
+<!-- modal aria window -->
+<!-- src="https://a11y.nicolas-hoffmann.net/modal/js/jquery-accessible-modal-window-aria_1478096063.js" -->
+<script>
+$(document).ready(function(){
+
+   /*
+    * jQuery simple and accessible modal window, using ARIA
+    * Website: http://a11y.nicolas-hoffmann.net/modal/
+    * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
+    */
+   // loading modal ------------------------------------------------------------------------------------------------------------
+   
+   // init
+   var $modals = $( '.js-modal' ),
+       $body = $( 'body' );
+
+   $modals.each( function(index_to_expand) {
+       var $this = $(this) ,
+           index_lisible = index_to_expand+1;
+          
+       $this.attr({
+             'id' : 'label_modal_' + index_lisible
+              });
+
+   });
+      
+   // jQuery formatted selector to search for focusable items
+   var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+      
+   if ( $('#js-modal-page').length === 0 ) { // just to avoid missing #js-modal-page
+       $body.wrapInner('<div id="js-modal-page"></div>');
+       }
+      
+   // events ------------------
+   $body.on( 'click', '.js-modal', function( event ) {
+         var $this = $(this),
+             options = $this.data(),
+             $modal_starter_id = $this.attr('id'),
+             $modal_prefix_classes = typeof options.modalPrefixClass !== 'undefined' ? options.modalPrefixClass + '-' : '',
+             $modal_text = options.modalText || '',
+             modal_content_id = typeof options.modalContentId !== 'undefined' ? options.modalContentId : '',
+             $modal_content = $('#' + modal_content_id),
+             $modal_title = options.modalTitle || '',
+             $modal_close_text = options.modalCloseText || 'Close',
+             $modal_close_title = options.modalCloseTitle || options.modalCloseText,
+             $modal_background_click = options.modalBackgroundClick || '',
+             $modal_code,
+             $modal_overlay,
+             $page = $('#js-modal-page');
+         
+         // insert code at the end
+         $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title" open><div role="document">';
+         $modal_code += '<button id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '"><span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span></button>';
+         if ($modal_title !== ''){
+            $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
+            }
+         
+         if ($modal_text !== ''){
+            $modal_code += '<p>' + $modal_text + '</p>';
+            }
+            else {
+                  if (modal_content_id !== '' && $modal_content.length ){
+                     //var $modal_content_id = $('#' + $modal_content_id);
+                     $modal_code += '<div id="js-modal-content">';
+                     $modal_code += $modal_content.html();
+                     $modal_code += '</div>';
+                     $modal_content.empty();
+                     }
+                  }
+         $modal_code += '</div></dialog>';
+         
+         $( $modal_code ).insertAfter($page);
+         $body.addClass('no-scroll');
+         
+         $page.attr('aria-hidden', 'true');
+         
+         // add overlay
+         if ( $modal_background_click != 'disabled' ){
+            $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">Close modal</span></span>';
+            }
+            else { $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" data-background-click="disabled"></span>'; }
+         
+         $( $modal_overlay ).insertAfter($('#js-modal'));
+         
+         $('#js-modal-close').focus();
+         
+         event.preventDefault();
+         
+   })
+   // close button and esc key
+   $body.on( 'click', '#js-modal-close', function( event ) {
+         var $this = $(this),
+             $focus_back = '#' + $this.attr('data-focus-back'),
+             $content_back_id = $this.attr('data-content-back-id'),
+             $js_modal = $('#js-modal'),
+             $js_modal_content = $('#js-modal-content'),
+             $class_element = $js_modal.attr('class'),
+             $class_element_reverse = $class_element + '--reverse',
+             $js_modal_overlay = $('#js-modal-overlay'),
+             $page = $('#js-modal-page');
+             
+         $page.removeAttr('aria-hidden');
+
+         var delay = $js_modal.css( "animation-duration" );
+         //alert(delay);
+         if ( delay != '0s' ){
+             var timeout = parseFloat(delay.replace('s','')) * 1000;
+             timeout++;
+			 
+             $js_modal.removeClass( $class_element );
+             setTimeout(function() { $js_modal.addClass( $class_element_reverse ); }, 1);
+             setTimeout(function() {
+                  $body.removeClass('no-scroll');
+                  $js_modal.remove();
+                  $js_modal_overlay.remove();
+                  if ($content_back_id !== ''){
+                     $('#' + $content_back_id).html( $js_modal_content.html() ); 
+                     }
+                  $( $focus_back ).focus();	
+                  $js_modal.removeClass( $class_element_reverse );
+                  $js_modal.addClass( $class_element );
+                }, timeout);
+            }
+            else {
+                  $body.removeClass('no-scroll');
+                  $js_modal.remove();
+                  $js_modal_overlay.remove();
+                  if ($content_back_id !== ''){
+                     $('#' + $content_back_id).html( $js_modal_content.html() ); 
+                     }
+                  $( $focus_back ).focus();
+                 }
+     
+   })
+   .on( 'click', '#js-modal-overlay', function( event ) {
+         var $close = $('#js-modal-close');
+         
+         event.preventDefault();
+         $close.trigger('click');
+		 
+   })
+   .on( 'keydown', '#js-modal-overlay', function( event ) {
+          var $close = $('#js-modal-close');
+
+          if ( event.keyCode == 13 || event.keyCode == 32 ) { // space or enter
+              event.preventDefault();
+              $close.trigger('click');
+              }
+   })
+   .on( "keydown", "#js-modal", function( event ) {
+         var $this = $(this),
+             $close = $('#js-modal-close');
+         
+         if ( event.keyCode == 27 ) { // esc
+             $close.trigger('click');
+            }
+         if ( event.keyCode == 9 ) { // tab or maj+tab
+
+            // get list of all children elements in given object
+            var children = $this.find('*');
+    
+            // get list of focusable items
+            var focusableItems = children.filter(focusableElementsString).filter(':visible');
+    
+            // get currently focused item
+            var focusedItem = $( document.activeElement );
+    
+            // get the number of focusable items
+            var numberOfFocusableItems = focusableItems.length;
+            
+            var focusedItemIndex = focusableItems.index(focusedItem);
+
+            if ( !event.shiftKey && (focusedItemIndex == numberOfFocusableItems - 1) ){
+                focusableItems.get(0).focus();
+                event.preventDefault();
+               }
+            if ( event.shiftKey && focusedItemIndex == 0 ){
+                focusableItems.get(numberOfFocusableItems - 1).focus();
+                event.preventDefault();
+               }
+               
+           
+            }
+         
+   })
+   .on( "keyup", ":not(#js-modal)", function( event ) {
+          var $this = $(this),
+              $js_modal = $('#js-modal'),
+              focusedItem = $( document.activeElement ),
+              in_jsmodal = focusedItem.parents('#js-modal').length ? true : false,
+              $close = $('#js-modal-close');
+          
+          if ( $js_modal.length && event.keyCode == 9 && in_jsmodal === false ) { // tab or maj+tab
+             $close.focus();
+          }
+
+   })
+   .on( 'focus', '#js-modal-tabindex', function( event ) {
+         $close.focus(); 
+   });
+ 
+  
+});
+</script>
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<h1>Developer's 508 Checklist for Desktop Web Applications</h1> (version 1.e)
+<p>Developers are encouraged to become familiar with <a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/guide-to-the-section-508-standards/web-based-intranet-and-internet-information-and-applications-1194-22" target="_blank">Section 508</a> compliance in the early stages of development to ensure applicable requirements are met. Upon completion of the project, developers should complete this self-assessment to assist project managers and Trusted Testers<sup><a href="#fn1" id="r1">[1]</a></sup> in their Section 508 evaluation. Trusted Tester training registration can be requested by emailing <a href="mailto:accessibility@hq.dhs.gov">accessibility@hq.dhs.gov</a>. </p>
+
+<p> Entered data can be saved by selecting the link below the checklist table.<mark>Use Chrome or Firefox! Form entries will not be saved in Internet Explorer.</mark></p>
+<h2>A. Developer Info</h2>
+<div class="cols2">
+	<!--<div class="keeptogether">-->
+	<p><label for="dev">Developer:</label> <input type="text" id="dev" required="" value=""></p>
+	<p><label for="email">Email address:</label> <input type="email" id="email" required="" value=""></p>
+	<p><label for="phone">Phone number:</label> <input type="tel" id="phone" value=""></p>
+	<!--</div> -->
+	<!--<div class="keeptogether"> -->
+	<p><br><label for="date">Date:</label> <input type="date" id="date" value="">  </p>
+	<p><label for="prod">Product and Version:</label> <input type="text" id="prod" required="" value=""></p>
+	<p><label for="url">URL:</label> <input type="url" id="url" value=""></p>
+	
+</div>
+<h2>B. Not Applicable</h2>
+<p>Some element types have multiple Section 508 requirements. This section is provided to help you enter results for those tests more quickly. Select the element types that are NOT part of your application and the respective requirements will be updated as "Not Applicable" in the checklist automatically. </p>
+
+<fieldset>
+<legend>Select the element types that are not part of your Web content:</legend>
+<div class="cols2">
+<p> <input type="checkbox" id="noforms"><label for="noforms">No Form fields</label></p>
+<p> <input type="checkbox" id="nolinks"><label for="nolinks">No links, user controls, or scripted elements</label></p>
+<p> <input type="checkbox" id="noimages"><label for="noimages">No images</label></p>
+<p> <input type="checkbox" id="novideo"><label for="novideo">No video, audio or multimedia</label></p>
+<p> <input type="checkbox" id="nodatatables"><label for="nodatatables">No data tables</label></p>
+<p> <br><input type="checkbox" id="nocss"><label for="nocss">No style sheets</label></p>
+<p> <input type="checkbox" id="noframes"><label for="noframes">No frames or iframes</label></p>
+<p> <input type="checkbox" id="norepcontent"><label for="norepcontent">No repetitive content/links</label></p> 
+<p> <input type="checkbox" id="noplugins"><label for="noplugins">No required plug-ins</label></p>
+<p> <input type="checkbox" id="noaltversion"><label for="noaltversion">No alternative version for accessibility</label></p>
+</div>
+</fieldset>
+
+<div id="content">
+<!--resize textarea to fit input content -->
+<script>
+$('#content').on('change keyup keydown paste cut', 'textarea', function () {
+        $(this).height(0).height(this.scrollHeight);
+    }).find('textarea').change();
+</script>
+
+<h2>C. Self-Assessment Checklist</h2>
+<p>Web developers should review their application and complete the rest of the checklist by selecting the appropriate status for each requirement. Some requirements (like keyboard access) always apply.</p>
+<table class="pagebreak">
+	<tbody><tr>
+		<th scope="col">508 Category</th>
+		<th scope="col" id="testid">Test ID <br>(ref)</th>
+		<th scope="col" id="req">Requirements for 508 compliant content</th>
+		<th scope="col" id="yn">Status</th>
+		<th scope="col" id="explain">Explain any applicable requirements that were 'Not Met'</th>
+	</tr>
+<!-- 1.1 KEYBOARD ACCESS -->
+	<tr>
+		<th scope="row" rowspan="7" id="keybd">1.1 Keyboard Access
+		</th>
+		<td>A, B</td>
+		<td id="kybda"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Common, well-known Windows keyboard shortcuts include Enter (to select), Tab (to navigate the page), arrow keys (to move through options), Spacebar (to check/uncheck). The keyboard focus should be able to move through the entire page's interactive functions without getting trapped on an element." data-modal-title="Keyboard Access" data-modal-close-text="X" data-modal-close-title="Close this window">All interactive elements and functions can be accessed or activated by keyboard.</a></td>
+		<td><select id="k11Asel" aria-labelledby="keybd kybda yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Ano" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="k11Aexp">		
+			<textarea aria-labelledby="keybd kybda k11Ano explain"> </textarea> 
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="kybdb">No keyboard "trap" exists.</td>
+		<td><select id="k11Bsel" aria-labelledby="keybd kybdb yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Bno" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="k11Bexp">
+			<textarea aria-labelledby="keybd kybdb k11Bno explain"> </textarea> 
+			</div>
+		</td>
+	</tr>
+	-->
+	<tr>
+		<td>C</td>
+		<td id="kybdc">If non-standard or alternative keyboard commands are required for access, they are documented within the application (for example, in the Help section)</td>
+		<td><select id="k11Csel" aria-labelledby="keybd kybdc yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option> </select>
+		</td>
+		<td><div id="k11Cexp">
+			<textarea aria-labelledby="keybd kybdc k11Cno explain"> </textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>D</td>
+		<td id="kybdd">All information revealed by mouse over (TITLE) is available to keyboard-only users (i.e., there is equivalent screen text and/or visual context).</td>
+		<td><select id="k11Dsel" aria-labelledby="keybd kybdd yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Dno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="k11Dexp">
+			<textarea aria-labelledby="keybd kybdd k11Dno explain"></textarea>
+			</div> 
+		</td>
+	</tr>
+	<tr>
+		<td>E, F</td>
+		<td id="kybde">At all times, there is a visual indication of the current keyboard focus and it is on the correct element.</td>
+		<td><select id="k11Esel" aria-labelledby="keybd kybde yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Eno" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="k11Eexp">
+			<textarea aria-labelledby="keybd kybde k11Eno explain"></textarea>
+			</div> 
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>F</td>
+		<td id="kybdf">The visual focus always appears on the correct element.</td>
+		<td><select id="k11Fsel" aria-labelledby="keybd kybdf yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Fno" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="k11Fexp">
+			<textarea aria-labelledby="keybd kybdf k11Fno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+	<tr>
+		<td>G</td>
+		<td id="kybdg">The visual focus remains within a modal dialog box until closed.</td>
+		<td><select id="k11Gsel" aria-labelledby="keybd kybdg yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Gno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="k11Gexp">
+			<textarea aria-labelledby="keybd kybdg k11Gno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>H</td>
+		<td id="kybdh">The visual focus moves to revealed content or a description of the content change is provided.</td>
+		<td><select id="k11Hsel" aria-labelledby="keybd kybdh yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Hno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="k11Hexp">
+			<textarea aria-labelledby="keybd kybdh k11Hno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>I</td>
+		<td id="kybdi"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Typical tab order is left to right, top to bottom. Any deviation from the expected tab order should not cause confusion." data-modal-title="Logical Tab Order" data-modal-close-text="X" data-modal-close-title="Close this window">The tab order is logical.</a></td>
+		<td><select id="k11Isel" aria-labelledby="keybd kybdi yn"><option value="select" selected="selected">Select </option><option value="Yes">Met</option><option id="k11Ino" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="k11Iexp">
+			<textarea aria-labelledby="keybd kybdi k11Ino explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 1.2.2 FORMS -->
+	<tr>
+		<th scope="row" id="forms" rowspan="3">1.2.2 Forms</th>
+		<td>A, B, C</td>
+		<td id="formsa"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Acceptable form labeling techniques are label for/ID, fieldset/legend (as needed), Title, and ARIA. If used, required form indicators must be within the programmatic label." data-modal-title="Form Labels" data-modal-close-text="X" data-modal-close-title="Close this window">All Web form fields have markup to associate to the form’s complete instructions and cues.</a></td>
+		<td><select id="f122Asel" aria-labelledby="forms formsa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Aexp">
+			<textarea aria-labelledby="forms formsa f122Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="formsb">'Label for' and 'ID' are valid HTML.</td>
+		<td><select id="f122Bsel" aria-labelledby="forms formsb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Bexp">
+			<textarea aria-labelledby="forms formsb f122Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td id="formsc">Form instructions that are revealed by mouse over (TITLE) are also available onscreen.</td>
+		<td><select id="f122Csel" aria-labelledby="forms formsc yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Cexp">
+			<textarea aria-labelledby="forms formsc f122Cno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+	<tr>		
+		<td>D, E</td>
+		<td id="formsd">All ARIA forms have complete instructions in the Name property (using aria-labelledby, e.g.), and have correct Role, State, Value properties.<sup><a href="#fn2" id="r2">[2]</a></sup></td>
+		<td><select id="f122Dsel" aria-labelledby="forms formsd yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Dno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Dexp">
+			<textarea aria-labelledby="forms formsd f122Dno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>E</td>
+		<td id="formse">All ARIA forms have correct Role, State or Value  properties.<sup><a href="#fn3" id="r3">[3]</a></sup></td>
+		<td><select id="f122Esel" aria-labelledby="forms formse yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Eno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Eexp">
+			<textarea aria-labelledby="forms formse f122Eno explain"></textarea> 
+			</div>
+		</td>
+	</tr>
+	-->
+	<tr>
+		<td>F</td>
+		<td id="formsf">All form controls identify their purpose.</td>
+		<td><select id="f122Fsel" aria-labelledby="forms formsf yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f122Fno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f122Fexp">
+			<textarea aria-labelledby="forms formsf f122Fno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 1.2.3 Links -->
+	<tr>
+		<th scope="row" id="links" rowspan="2">1.2.3 Links and User Controls</th>
+		<td>A</td>
+		<td id="linksa">All links have a unique and meaningful description.</td>
+		<td><select id="c123Asel" aria-labelledby="links linksa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="c123Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="c123Aexp">
+			<textarea aria-labelledby="links linksa c123Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B</td>
+		<td id="linksb">All scripted elements have a unique and meaningful description.</td>
+		<td><select id="c123Bsel" aria-labelledby="links linksb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="c123Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="c123Bexp">
+			<textarea aria-labelledby="links linksb c123Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 2.2 Images -->
+	<tr>
+		<th scope="row" id="imgs" rowspan="4">2.2 Images</th>
+		<td>A, B, C, D</td>
+		<td id="imgsa"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Images that contain meaningful text should have the same text in their description. Decorative images should have no description (ALT=&quot;&quot;)." data-modal-title="Meaningful Image Descriptions" data-modal-close-text="X" data-modal-close-title="Close this window">All meaningful Web images have equivalent text descriptions (purpose and function) via an ALT, TITLE or ARIA attribute.</a></td>
+		<td><select id="i22Asel" aria-labelledby="imgs imgsa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Aexp">
+			<textarea aria-labelledby="imgs imgsa i22Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="imgsb">All meaningful images have an equivalent text description (purpose and function).</td>
+		<td><select id="i22Bsel" aria-labelledby="imgs imgsb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Bexp">
+			<textarea aria-labelledby="imgs imgsb i22Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td id="imgsc">All decorative images have ALT="".</td>
+		<td><select id="i22Csel" aria-labelledby="imgs imgsc yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Cexp">
+			<textarea aria-labelledby="imgs imgsc i22Cno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>		
+		<td>D</td>
+		<td id="imgsd">Images that contain text have the same text in the ALT.</td>
+		<td><select id="i22Dsel" aria-labelledby="imgs imgsd yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Dno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Dexp">
+			<textarea aria-labelledby="imgs imgsd i22Dno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+	<tr>
+		<td>E</td>
+		<td id="imgse"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Provide text alternatives such as &quot;this captcha is followed by an audio challenge if you cannot view this image&quot;, and provide alternative forms of the CAPTCHA using output modes for different types of sensory perception. Refer to W3 Captcha Images for further guidance (http://www.w3.org/TR/html51/semantics-embedded-content.html#captcha-images)." data-modal-title="Captcha Descriptions" data-modal-close-text="X" data-modal-close-title="Close this window">A CAPTCHA image ALT describes its purpose.</a></td>
+		<td><select id="i22Esel" aria-labelledby="imgs imgse yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Eno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Eexp">
+			<textarea aria-labelledby="imgs imgse i22Eno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>F</td>
+		<td id="imgsf"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Any components that change state, whether dynamically or by user control, must have a description of current status and options. Examples include expand/collapse tree nodes, sort functions, meter readings, etc." data-modal-title="Multi-state Descriptions" data-modal-close-text="X" data-modal-close-title="Close this window">All multi-state components provide complete status information.</a></td>
+		<td><select id="i22Fsel" aria-labelledby="imgs imgsf yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Fno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Fexp">
+			<textarea aria-labelledby="imgs imgsf i22Fno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>G</td>
+		<td id="imgsg">Images have consistent meaning throughout the application.</td>
+		<td><select id="i22Gsel" aria-labelledby="imgs imgsg yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i22Gno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i22Gexp">
+			<textarea aria-labelledby="imgs imgsg i22Gno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 2.3 Video only -->
+	<tr>
+		<th scope="row"  id="vid" rowspan="1">2.3 Video-only and Animation</th>
+		<td>B</td>
+		<td id="vidb">Video-only files have an equivalent text or audio description.</td>
+		<td><select id="v23Bsel" aria-labelledby="vid vidb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="v23Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="v23Bexp">
+			<textarea aria-labelledby="vid vidb v23Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 2.4 Audio only -->
+	<tr>
+		<th scope="row" id="aud" rowspan="1">2.4 Audio-only</th>
+		<td>A</td>
+		<td id="auda">Audio files have an equivalent text description/transcript.</td>
+		<td><select id="a24Asel" aria-labelledby="aud auda yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="a24Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="a24Aexp">
+			<textarea aria-labelledby="aud auda a24Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 2.5 Image Maps -->
+	<tr>
+		<th scope="row" id="imap" rowspan="1">2.5 Image Maps</th>
+		<td>A</td>
+		<td id="imapa">Server side image maps are not used.</td>
+		<td><select id="i25Asel" aria-labelledby="imap imapa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="i25Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="i25Aexp">
+			<textarea aria-labelledby="imap imapa i25Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 3.1 Color Dependence -->
+	<tr>
+		<th scope="row" id="cd" rowspan="1">3.1 Color Dependence</th>
+		<td>A</td>
+		<td id="cdb"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="In addition to color indicators, use different shapes or patterns or onscreen text to provide visual distinctions." data-modal-title="Non-color based Indicators" data-modal-close-text="X" data-modal-close-title="Close this window">Information that is provided by color also has onscreen text descriptions or other non-color based differences.</a></td>
+		<td><select id="cd31Bsel" aria-labelledby="cd cdb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="cd31Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="cd31Bexp">
+			<textarea aria-labelledby="cd cdb cd31Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 3.2 Color Contrast -->
+	<tr>
+		<th scope="row" id="cc" rowspan="1">3.2 Color Contrast for Text</th>
+		<td>B</td>
+		<td id="cca"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Disabled form fields and non-meaningful text are exempt from this requirement." data-modal-title="Color Contrast" data-modal-close-text="X" data-modal-close-title="Close this window">All meaningful text and their backgrounds have a minimum contrast ratio of 4.5:1.</a><sup><a href="#fn4" id="r4">[3]</a></sup> </td>
+		<td><select id="cc32Asel" aria-labelledby="cc cca yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="cc32Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="cc32Aexp">
+			<textarea aria-labelledby="cc cca cc32Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 4 Flashing -->
+	<tr>
+		<th scope="row" id="flash" rowspan="1">4 Flashing</th>
+		<td>A, B</td>
+		<td id="flasha">All flickering elements have a defined flicker frequency set at or below 3Hz.</td>
+		<td><select id="f24Asel" aria-labelledby="flash flasha yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f24Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f24Aexp">
+			<textarea aria-labelledby="flash flasha f24Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="flashb">The frequency of flickering elements is programmatically set at or above 3Hz (provide the programmed frequency).</td>
+		<td><select id="f24Bsel" aria-labelledby="flash flashb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f24Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f24Bexp">
+			<textarea aria-labelledby="flash flashb f24Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+<!-- 5 Page Titles -->
+	<tr>
+		<th scope="row" id="pt" rowspan="1">5 Page Titles</th>
+		<td>A</td>
+		<td id="pta">All pages have a meaningful page title in plain language.</td>
+		<td><select id="pt5Asel" aria-labelledby="pt pta yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="pt5Ano" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="pt5Aexp">
+			<textarea aria-labelledby="pt pta pt5Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 6 Multimedia -->
+	<tr>
+		<th scope="row" id="mm" rowspan="2">6 Multimedia</th>
+		<td>A, B</td>
+		<td id="mmab">Equivalent, synchronized captions are provided for the audio content of multimedia.</td>
+		<td><select id="m6ABsel" aria-labelledby="mm mmab yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="m6ABno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="m6ABexp">
+			<textarea aria-labelledby="mm mmab m6ABno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C, D</td>
+		<td id="mmcd">Equivalent, synchronized audio descriptions are provided for the visual content of multimedia.</td>
+ 		<td><select id="m6CDsel" aria-labelledby="mm mmcd yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="m6CDno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="m6CDexp">
+			<textarea aria-labelledby="mm mmcd m6CDno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 7 Time Out -->
+	<tr>
+		<th scope="row" id="to" rowspan="1">7 Time Outs</th>
+		<td>A, B, C</td>
+		<td id="toa"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="A static, persistent notice of a time limitation does not meet this requirement." data-modal-title="Time Out Notification" data-modal-close-text="X" data-modal-close-title="Close this window">A notice is displayed at least 20 seconds before a time out is about to occur, and the user is offered an option to request more time.</a></td>
+		<td><select id="t7Asel" aria-labelledby="to toa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t7Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t7Aexp">
+			<textarea aria-labelledby="to toa t7Ano explain"></textarea> 
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="tob">The application's time out notification is displayed for at least 20 seconds.</td>
+ 		<td><select id="t7Bsel" aria-labelledby="to tob yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t7Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t7Bexp">
+			<textarea aria-labelledby="to tob t7Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td id="toc">The user is offered an option to request more time before the time out occurs.</td>
+		<td><select id="t7Csel" aria-labelledby="to toc yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t7Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t7Cexp">
+			<textarea aria-labelledby="to toc t7Cno explain"></textarea> 
+			</div>
+		</td>
+	</tr>
+	-->
+<!-- 9.1 Language -->
+	<tr>
+		<th scope="row" id="lang" rowspan="2">9.1 Language</th>
+		<td>A</td>
+		<td id="langa">The correct default language for the page is programmatically set.</td>
+		<td><select id="L91Asel" aria-labelledby="lang langa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="L91Ano" value="No">Not Met</option> </select>
+		</td>
+		<td><div id="L91Aexp">
+			<textarea aria-labelledby="lang langa L91Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B</td>
+		<td id="langb">A passage (content, image descriptions, form labels etc.) that differs from the default language of the page is programmatically identified correctly.</td>
+ 		<td><select id="L91Bsel" aria-labelledby="lang langb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="L91Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="L91Bexp">
+			<textarea aria-labelledby="lang langb L91Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 9.2 Section Headings -->
+	<tr>
+		<th scope="row" id="head" rowspan="1">9.2 Section Headings</th>
+		<td>A, B</td>
+		<td id="heada">Visually apparent headings are programmatically identified (with &lt;H&gt;) and match the visual heading structure.</td>
+		<td><select id="h92Asel" aria-labelledby="head heada yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="h92Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="h92Aexp">
+			<textarea aria-labelledby="head heada h92Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="headb">Programmatic &lt;H&gt; levels on visually apparent headings match visual structure.</td>
+		<td><select id="h92Bsel" aria-labelledby="head headb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="h92Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="h92Bexp">
+			<textarea aria-labelledby="head headb h92Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+<!-- 10 Data Tables -->
+	<tr>
+		<th scope="row" id="dt" rowspan="3">10 Data Tables</th>
+		<td>A</td>
+		<td id="dta"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Header cells should have TH scope=&quot;row&quot; or TH scope=&quot;col&quot; if the data table has one or two header levels. Use ID and HEADER associations if the table has more than two header levels." data-modal-title="Data Table Headers" data-modal-close-text="X" data-modal-close-title="Close this window">All row and column headers of a data table are identified programmatically.</a></td>
+		<td><select id="t10Asel" aria-labelledby="dt dta yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t10Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t10Aexp">
+			<textarea aria-labelledby="dt dta t10Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B, D</td>
+		<td id="dtb"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Data tables must be created with TABLE, TH, and TD tags. Creating data tables with divs or styles and images of data tables will not meet this requirement." data-modal-title="Data Table Semantics" data-modal-close-text="X" data-modal-close-title="Close this window">All data tables are created with proper HTML table markup (not images).</a></td>
+ 		<td><select id="t10Bsel" aria-labelledby="dt dtb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t10Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t10Bexp">
+			<textarea aria-labelledby="dt dtb t10Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td id="dtc"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="Data cells of complex tables must be associated to each of its row and column headers. For tables with more than two header levels, use the HEADER attribute in each TD (and TH as needed) and identify the ID's for each of its column and row header cells." data-modal-title="Complex Data Tables" data-modal-close-text="X" data-modal-close-title="Close this window">All data cells of complex data tables are programmatically associated to row and column headers.</a></td>
+		<td><select id="t10Csel" aria-labelledby="dt dtc yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="t10Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="t10Cexp">
+			<textarea aria-labelledby="dt dtc t10Cno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 11 Style Sheets -->
+	<tr>
+		<th scope="row" id="ss" rowspan="4">11 Style Sheet Dependence</th>
+		<td>A</td>
+		<td id="ssa">The order of the content may have changed but the content remains logical when style sheets are disabled.</td>
+		<td><select id="s11Asel" aria-labelledby="ss ssa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="s11Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="s11Aexp">
+			<textarea aria-labelledby="ss ssa s11Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B</td>
+		<td id="ssb">All relevant content or information from a meaningful image are available when style sheets are disabled.</td>
+ 		<td><select id="s11Bsel" aria-labelledby="ss ssb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="s11Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="s11Bexp">
+			<textarea aria-labelledby="ss ssb s11Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td id="ssc">Content does not overlap or become illegible when style sheets are disabled.</td>
+		<td><select id="s11Csel" aria-labelledby="ss ssc yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="s11Cno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="s11Cexp">
+			<textarea aria-labelledby="ss ssc s11Cno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>		
+		<td>D</td>
+		<td id="ssd">Programming code or other confusing elements are not revealed on the page when style sheets are disabled.</td>
+		<td><select id="s11Dsel" aria-labelledby="ss ssd yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="s11Dno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="s11Dexp">
+			<textarea aria-labelledby="ss ssd s11Dno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 12 Frames -->
+	<tr>
+		<th scope="row" id="frame" rowspan="1">12 Frames</th>
+		<td>A, B</td>
+		<td id="framea">Frames and iframes have a descriptive Title or Name.</td>
+		<td><select id="f12Asel" aria-labelledby="frame framea yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f12Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f12Aexp">
+			<textarea aria-labelledby="frame framea f12Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<!--
+	<tr>
+		<td>B</td>
+		<td id="frameb">Iframes have a descriptive Title or Name.</td>
+ 		<td><select id="f12Bsel" aria-labelledby="frame frameb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="f12Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="f12Bexp">
+			<textarea aria-labelledby="frame frameb f12Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	-->
+<!-- 13 Repetive Content -->
+	<tr>
+		<th scope="row" id="rep" rowspan="2">13 Repetitive Content and Links</th>
+		<td>A, B, C</td>
+		<td id="repa"><a href="#" class="js-modal" data-modal-prefix-class="simple" data-modal-text="A common skip method is a same page link (a link that takes the user to somewhere else within the page). The skip link must be among the first items in the tab order and be visible when it receives keyboard focus. (To test, tab to it.) When the skip link is activated (by pressing the Enter key), the keyboard focus should be moved past the page's repetitive content. (It may be necessary to press Tab again to see where the focus is.)" data-modal-title="Skip Repetitive Content" data-modal-close-text="X" data-modal-close-title="Close this window">There is a skip method that moves the keyboard focus past the repetitive content.</a></td>
+		<td><select id="r13Asel" aria-labelledby="rep repa yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="r13Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="r13Aexp">
+			<textarea aria-labelledby="rep repa r13Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>D</td>
+		<td id="repb">The relative order of repeated components is consistent with other similar pages.</td>
+ 		<td><select id="r13Bsel" aria-labelledby="rep repb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="r13Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="r13Bexp">
+			<textarea aria-labelledby="rep repb r13Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 14 Required Plugins -->
+	<tr>
+		<th scope="row" id="plug" rowspan="2">14 Required Plug-ins</th>
+		<td>A</td>
+		<td id="pluga">In a public site, the link to download a required plug-in is provided.</td>
+		<td><select id="p14Asel" aria-labelledby="plug pluga yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="p14Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="p14Aexp">
+			<textarea aria-labelledby="plug pluga p14Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B</td>
+		<td id="plugb">The plug-in required to view content is compliant. (Confirm with vendor accessibility documentation.)</td>
+ 		<td><select id="p14Bsel" aria-labelledby="rep repb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="p14Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="p14Bexp">
+			<textarea aria-labelledby="plug plugb p14Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+<!-- 15 Alternative version -->
+	<tr>
+		<th scope="row" id="alt" rowspan="2">15 Alternative (Accessible) Version</th>
+		<td>A</td>
+		<td id="alta">If an alternative page is provided, it contains equivalent information as the primary page.</td>
+		<td><select id="a15Asel" aria-labelledby="alt alta yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="a15Ano" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="a15Aexp">
+			<textarea aria-labelledby="alt alta a15Ano explain"></textarea>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>B</td>
+		<td id="altb">An alternative page was provided because the primary site cannot be made compliant.</td>
+ 		<td><select id="a15Bsel" aria-labelledby="alt altb yn"><option value="select" selected="selected">Select</option><option value="Yes">Met</option><option id="a15Bno" value="No">Not Met</option> <option value="NA">Not Applicable</option></select>
+		</td>
+		<td><div id="a15Bexp">
+			<textarea aria-labelledby="alt altb a15Bno explain"></textarea>
+			</div>
+		</td>
+	</tr>
+</tbody></table>
+</div>
+
+<!-- <p><mark><a href="#" onclick="SaveAs();">Save this form and data to computer.</a></mark></p>  -->
+<button type="button" onclick="SaveAs();">Save form and data</button>
+<mark>The SAVE function does not work in Internet Explorer.</mark>
+
+
+<h2>References</h2>
+<p id="fn1"><a href="#r1">[1]</a> The <a href="https://www.dhs.gov/sites/default/files/publications/DHS_Section_508_Compliance_Test_Process_for_Applications_0.pdf" target="_blank">Trusted Tester 508 compliance Test Process</a> is the DOJ Test Process for Web content and applications.
+</p>
+<p id="fn2"><a href="#r2">[2]</a> Use Microsoft Inspect (or similar) to check the Name, Role, State, Value properties of ARIA coded elements. Inspect is part of the <a href=" https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk" target="_blank">Windows SDK</a>. Instructions for installation and use can be found in the Test Process.
+</p>
+<!--
+<p id="fn3"><a href="#r3">[3]</a> Use Microsoft Inspect (or similar) to check the Name, Role, State, Value properties of ARIA coded elements. Inspect is part of the <a href=" https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk" target="_blank">Windows SDK</a>. Instructions for installation and use can be found in the Test Process.
+</p>
+-->
+<p id="fn4"><a href="#r4">[3]</a> Check with the <a href="https://www.paciellogroup.com/resources/contrastanalyser/" target="_blank">Colour Contrast Analyzer</a> or similar tool. Instructions for installation and use can be found in the Test Process.
+</p>
+
+<!-- hover change bgcolor entire row of data table -->
+<!-- <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+<script>
+$("td").hover(function() {
+
+  $el = $(this);
+  
+  $el.parent().addClass("hover");
+
+  if ($el.parent().has('th[rowspan]').length == 0)
+    
+  	$el
+      .parent()
+      .prevAll('tr:has(th[rowspan]):first')
+      .find('th[rowspan]')
+      .addClass("hover");
+
+}, function() { 
+      
+  $el
+    .parent()
+    .removeClass("hover")
+    .prevAll('tr:has(th[rowspan]):first')
+    .find('th[rowspan]')
+    .removeClass("hover");
+
+});
+</script>
+
+
+</body>
+</html>
